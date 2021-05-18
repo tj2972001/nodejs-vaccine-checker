@@ -28,11 +28,15 @@
 ## To run locally
 
 **If you have district id, then :**
-nodemon app.js <<district_id_here>> district
+
+    nodemon app.js <<district_id_here>> district
+
 for e.g : `nodemon app.js 391 district`
 
-**If you have pincode then:**  
-nodemon app.js <<pincode_here>> pin
+**If you have pincode then:**
+
+    nodemon app.js <<pincode_here>> pin
+
 for e.g: `nodemon app.js 414111 pin`
 
 ## To get Vaccination of 18+ age group only
