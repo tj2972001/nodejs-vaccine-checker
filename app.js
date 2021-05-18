@@ -91,9 +91,8 @@ function checkVaccineAvailability() {
   }
 }
 
-const intervalBetweenRequest = 1000;
-checkVaccineAvailability();
-// check vaccine avaibility after every 30 minutes
-// setInterval(() => {
-//   checkVaccineAvailability();
-// }, intervalBetweenRequest);
+const intervalBetweenRequest = configObj.interval;
+//check vaccine avaibility after every 30 minutes
+setInterval(() => {
+  checkVaccineAvailability();
+}, intervalBetweenRequest);

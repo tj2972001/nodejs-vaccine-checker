@@ -53,6 +53,6 @@ for e.g : `nodemon app.js 391 district 18+`
 
 for e.g: `nodemon app.js 414111 pin 18+`
 
-## By default script checks vaccine availability after every 30 minutes, you can change it in app.js (line no: 62) by changing `intervalBetweenRequest` value
+### By default script checks vaccine availability after every 30 minutes, if you want to change this duration, change in config.js
 
 ### Feel free to open issues, if you have any
