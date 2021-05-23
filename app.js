@@ -80,4 +80,4 @@ const intervalBetweenRequest = configObj.interval;
 //check vaccine avaibility after every 30 minutes
 setInterval(() => {
   checkVaccineAvailability();
-}, 2000);
+}, intervalBetweenRequest);
