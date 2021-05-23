@@ -41,42 +41,27 @@ function checkVaccineAvailability() {
             mainMsgContent = `\nBY: Tejas Jadhav<9503402197>\n CENTER: ${center.name} \n ADDRESS: ${center.address} \n DISTRICT: ${center.district_name} \n\n\n\n`;
             cnt = 1;
             for (session of center.sessions) {
+              const msgStr = `SR.NO: ${cnt} \n VACCINE: ${
+                session.vaccine
+              } \n MINIMUM AGE: ${session.min_age_limit} \n DATE: ${
+                session.date
+              } \n SLOTS: ${JSON.stringify(session.slots)} \n AVAILABLE: ${
+                session.available_capacity
+              } doses \n\n`;
               if (session.available_capacity >= 1) {
-                console.log(session);
                 if (process.argv.slice(2)[2] == "18+") {
                   if (session.min_age_limit == 18) {
-                    mainMsgContent =
-                      mainMsgContent +
-                      `SR.NO: ${cnt} \n VACCINE: ${
-                        session.vaccine
-                      } \n MINIMUM AGE: ${session.min_age_limit} \n DATE: ${
-                        session.date
-                      } \n SLOTS: ${JSON.stringify(
-                        session.slots
-                      )} \n AVAILABLE: ${
-                        session.available_capacity
-                      } doses \n\n`;
+                    mainMsgContent += msgStr;
                   } else {
                     console.log("Unfortunately, no vaccines for 18+");
                   }
                 } else {
-                  mainMsgContent =
-                    mainMsgContent +
-                    `SR.NO: ${cnt} \n VACCINE: ${
-                      session.vaccine
-                    } \n MINIMUM AGE: ${session.min_age_limit} \n DATE: ${
-                      session.date
-                    } \n SLOTS: ${JSON.stringify(
-                      session.slots
-                    )} \n AVAILABLE: ${session.available_capacity} doses \n\n`;
+                  mainMsgContent += msgStr;
                 }
                 cnt++;
               }
             }
-            if (
-              mainMsgContent.includes("dose") === true &&
-              mainMsgContent.includes("undefined") === false
-            ) {
+            if (mainMsgContent.includes("dose") === true) {
               messageConfig.body = mainMsgContent;
               msg.sendmsg(messageConfig);
             }
@@ -95,4 +80,4 @@ const intervalBetweenRequest = configObj.interval;
 //check vaccine avaibility after every 30 minutes
 setInterval(() => {
   checkVaccineAvailability();
-}, intervalBetweenRequest);
+}, 2000);
